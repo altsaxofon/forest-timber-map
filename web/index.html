@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geospatial Visualization</title>
+    <link rel="stylesheet" href="css/nouislider.min.css"> 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.15.0/proj4.js"></script>
+    <script src="js/openlayers/ol.js"></script>
+    <script src="js/nouislider.min.js"></script>
+
+    <link rel="stylesheet" href="css/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <div id="title" class="control">
+     <label>Explore Forest and House data </label>
+    </div>
+        <div id="controls" class="control">
+          <label for="layer-toggle">Toggle Frames:</label>
+          <div id="frame-buttons">
+            <span>Wood:</span>
+            <button class="frame-toggle active" data-value="Frame_wood">wood</button>
+            <button class="frame-toggle active" data-value="Frame_wood_logs">logs</button>
+            <button class="frame-toggle active" data-value="Frame_wood_beams">beams</button>
+            <button class="frame-toggle active" data-value="Frame_wood_planks">planks</button>
+            <button class="frame-toggle active" data-value="Frame_wood_saving">woodsaving</button>
+            <span>Other:</span>
+            <button class="frame-toggle active" data-value="Frame_concrete,Frame_concrete_aerated">concrete</button>
+            <button class="frame-toggle active" data-value="Frame_stone">stone</button>
+            <button class="frame-toggle active" data-value="Frame_bricks,Frame_bricks_leca,Frame_bricks_adobe">bricks</button>
+
+        </div>
+            <label for="layer-toggle">Layer:</label>
+            <select id="layer-toggle">
+              <option value="historic">Historic Tiles</option>
+              <option value="forest">Forest Shape</option>
+            </select>
+            <br>
+            <label for="display-toggle">Display:</label>
+            <select id="display-toggle">
+              <option value="points">Points</option>
+              <option value="heatmap">Heatmap</option>
+            </select>
+          </div>
+          <div id="charts" class="control">
+            <label>Mean forest coverage within 5km</label>
+
+            <canvas id="pie-chart-percentage" width="250" height="250"></canvas>
+
+            <label>Mean distance to forest</label>
+<canvas id="line-chart-distance" width="250" height="80">
+
+</canvas>
+          </div>
+          <!-- Canvas for Forest Percentage Pie Chart -->
+
+<div id="controls-bottom" class="control">
+  <label>Construction  year:</label>
+  <div id="slider"></div>
+
+
+</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
