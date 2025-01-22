@@ -57,7 +57,7 @@ const histLayer =  new ol.layer.Tile({
       attributions: '',
       minZoom: 3,
       maxZoom: 9,
-      url: 'data/forest-data/tiles/{z}/{x}/{-y}.png',
+      url: '../data/forest-data/skogskartan_xyz_tiles/{z}/{x}/{-y}.png',
       tileSize: [256, 256]
   })
 });
@@ -68,7 +68,7 @@ map.addLayer(histLayer);
 
   const forestShapeLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-      url: 'data/forest-data/forest_HQ.geojson', // Can be generated from shapefile if needed
+      url: '../data/forest-data/forest_cover_sweden_1840.geojson', // Can be generated from shapefile if needed
       format: new ol.format.GeoJSON(),
     }),
     visible: true,
@@ -84,7 +84,7 @@ map.addLayer(histLayer);
 // Add our House Data (GeoJSON format example)
   const houseLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-      url: 'data/house-data/houses_all_data.geojson', // Can be generated from shapefile if needed
+      url: '../data/house-data/house_data.geojson', // Can be generated from shapefile if needed
       format: new ol.format.GeoJSON(),
     }),
     visible: true,
