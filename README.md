@@ -5,9 +5,9 @@ The data can be explored via a custom web-tool: [The Forest/Timber map](https://
 
 The first part is dataset containing ~5000 records of buildings. The data is scrapted from three major Swedish realtor webistes during one day in 2023. If the building techinque of the frame was specified this has been extracted and modeled into a taxonomy descripbed in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
 
-The scond part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of "Skogskartan" in the Swedish National Archive. This has been georeferenced and 
+The scond part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of "Skogskartan" in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
 
-The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF, ensuring compatibility with a wide range of tools and applications.  
+The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF and XYZ tiles.
 
 ## Table of Contents  
 - [Overview](#overview)  
