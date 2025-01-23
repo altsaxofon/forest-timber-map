@@ -297,8 +297,12 @@ label {
     border: 2px solid black;;
     font-weight: 600;
 }
+.ol-popup strong{
 
-
+font-size: 14px;
+text-align: center;
+margin: 0 0 10px 0;
+}
 
   .ol-popup:after, .ol-popup:before {
     top: 100%;

@@ -609,7 +609,10 @@ map.on('click', function (event) {
       overlay.setPosition(coordinates);
       content.innerHTML = "";
 
+
+      const yearContainer = document.createElement('strong');
       const list = document.createElement('ul');
+
       for (let frame in frameFeatures) {
         if (frame.startsWith('Frame')) {
           if(frameFeatures[frame]){
@@ -620,6 +623,24 @@ map.on('click', function (event) {
           }
         }
       }
+
+      if(frameFeatures['Date']){
+
+              // Extract the year from the 'Date' property (assuming it exists and is a valid date string)
+      const featureDate = frameFeatures["Date"]; // Access the Date property
+      let year = ''; // Default to an empty string if no Date exists
+      
+        if (featureDate) {
+          const dateObject = new Date(featureDate); // Convert to Date object
+          if (!isNaN(dateObject)) { // Check if it's a valid date
+            year = dateObject.getFullYear(); // Extract the year
+            yearContainer.innerHTML = year;
+          }
+        }
+        
+
+      }      
+      content.appendChild(yearContainer);
       content.appendChild(list);
 
       // Apply filters to only show the selected house
