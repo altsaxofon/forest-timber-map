@@ -8,67 +8,133 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.15.0/proj4.js"></script>
-    <script src="js/openlayers/ol.js"></script>
-    <script src="js/nouislider.min.js"></script>
 
+   <script src="js/openlayers/ol.js"></script>
+
+    <script src="js/nouislider.min.js"></script>
     <link rel="stylesheet" href="css/ol.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+   <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css">  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+
+    <style>
+      .material-symbols-rounded {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      </style>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body class="geist-font">
     <div id="map" class="map"></div>
+    <div id="popup" class="ol-popup">
+      <div id="popup-content"></div>
+    </div>
+
+
+
+
     <div id="title" class="control">
-     <label>Explore Forest and House data</label>
+     <strong>Swedish building tradition and historic forest cover</strong> <a href="https://www.github.com/altsaxofon/forest-timber-map">
+      <span class="material-symbols-rounded">
+        info
+        </span>  
+    </a>
     </div>
         <div id="controls" class="control">
-          <label for="layer-toggle">Toggle Frames:</label>
-          <div id="frame-buttons">
-            <span>Wood:</span>
-            <button class="frame-toggle active" data-value="Frame_wood">wood</button>
-            <button class="frame-toggle active" data-value="Frame_wood_logs">logs</button>
-            <button class="frame-toggle active" data-value="Frame_wood_beams">beams</button>
-            <button class="frame-toggle active" data-value="Frame_wood_planks">planks</button>
-            <button class="frame-toggle active" data-value="Frame_wood_saving">woodsaving</button>
-            <span>Other:</span>
-            <button class="frame-toggle active" data-value="Frame_concrete,Frame_concrete_aerated">concrete</button>
-            <button class="frame-toggle active" data-value="Frame_stone">stone</button>
-            <button class="frame-toggle active" data-value="Frame_bricks,Frame_bricks_leca,Frame_bricks_adobe">bricks</button>
 
-        </div>
-            <label for="layer-toggle">Layer:</label>
-            <select id="layer-toggle">
-              <option value="historic">Historic Tiles</option>
-              <option value="forest">Forest Shape</option>
-            </select>
-            <br>
-            <label for="display-toggle">Display:</label>
-            <select id="display-toggle">
-              <option value="points">Points</option>
-              <option value="heatmap">Heatmap</option>
-            </select>
-          </div>
+          <STRONG>MAP LAYER</strong>
+            <div id="frame-buttons" class="control-list">
+              <div class="layer-button active" data-value="histLayer">
+                <span class="title">ORIGINAL (1840)</span>
+                <span class="material-symbols-rounded icon">check</span></div>
+                <div class="layer-button " data-value="forestShapeLayer">
+                  <span class="title">FOREST COVER (1840)</span>
+                  <span class="material-symbols-rounded icon">check</span></div>
+           
+
+            </div>
+
+          <STRONG>FILTER BUILDING TECHNIQUES</strong>
+            <div id="frame-buttons" class="control-list">
+                            <div class="first">WOOD</div>
+                            <div class="frame-toggle active" data-value="Frame_wood">
+                            <span class="title">wood</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                            <div class="frame-toggle active" data-value="Frame_wood_logs">
+                            <span class="title">logs</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                            <div class="frame-toggle active" data-value="Frame_wood_beams">
+                              <span class="title">beams</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                            <div class="frame-toggle active" data-value="Frame_wood_planks">
+                              <span class="title">planks</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                            <div class="frame-toggle active" data-value="Frame_wood_saving">
+                              <span class="title">woodsaving</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                          <div>OTHER</div>
+                            <div class="frame-toggle active" data-value="Frame_concrete,Frame_concrete_aerated">
+                              <span class="title">concrete</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                           <div class="frame-toggle active" data-value="Frame_stone">
+                            <span class="title">stone</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                     
+                            <div class="frame-toggle active last" data-value="Frame_bricks,Frame_bricks_leca,Frame_bricks_adobe">
+                              <span class="title">bricks</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+            </div>
+
+</div>
+            
+
+
+
+
           <div id="charts" class="control">
-            <label>Mean forest coverage within 5km</label>
+            <div id="hn-wrap" class="big"><span class="material-symbols-rounded">
+              cottage
+              </span>
+              x<span  id="number-houses"></span>
+            </div>
 
-            <canvas id="pie-chart-percentage" width="250" height="250"></canvas>
+            <div class="">
+              <strong>FOREST COVER (r5km)</strong>
+              <div id="pie-wrap">
+                <canvas id="pie-chart-percentage" width="400" height="400"></canvas>
+                <div id="pie-label" class="big">53%</div>
+              </div>
+            </div>
+            <div class="">
 
-            <label>Mean distance to forest</label>
-<canvas id="line-chart-distance" width="250" height="80">
+              <strong>FOREST DISTANCE</strong>
+              <div id="km-wrap" class="big">
+              <span  id="distance-km">0</span>km
+              </div>
+  <canvas id="line-chart-distance" width="400" height="100">
 
 </canvas>
-          </div>
+</div>
+</div>
           <!-- Canvas for Forest Percentage Pie Chart -->
 
 <div id="controls-bottom" class="control">
-  <label>Construction  year:</label>
+  <strong>Year of construction:</strong>
   <div id="slider"></div>
 
 
 </div>
 
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
 </body>
 </html>
