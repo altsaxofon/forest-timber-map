@@ -1,6 +1,13 @@
 # Swedish Historic Housing and Forest Coverage Datasets  
 
-This repository provides datasets and accompanying resources for the study of historical housing construction techniques in Sweden (1800–1920) and their relationship with forest coverage. The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF, ensuring compatibility with a wide range of tools and applications.  
+This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden (1800–1920) and their relationship with forest coverage. 
+The data can be explored via a custom web-tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
+
+The first part is dataset containing ~5000 records of buildings. The data is scrapted from three major Swedish realtor webistes during one day in 2023. If the building techinque of the frame was specified this has been extracted and modeled into a taxonomy descripbed in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
+
+The scond part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of "Skogskartan" in the Swedish National Archive. This has been georeferenced and 
+
+The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF, ensuring compatibility with a wide range of tools and applications.  
 
 ## Table of Contents  
 - [Overview](#overview)  
