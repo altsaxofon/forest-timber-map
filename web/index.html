@@ -81,4 +81,60 @@
                             <span class="material-symbols-rounded visibility icon">visibility</span></div>
                             <div class="frame-toggle active" data-value="Frame_wood_saving">
                               <span class="title">woodsaving</span>
-                 
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                          <div>OTHER</div>
+                            <div class="frame-toggle active" data-value="Frame_concrete,Frame_concrete_aerated">
+                              <span class="title">concrete</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                           <div class="frame-toggle active" data-value="Frame_stone">
+                            <span class="title">stone</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+                     
+                            <div class="frame-toggle active last" data-value="Frame_bricks,Frame_bricks_leca,Frame_bricks_adobe">
+                              <span class="title">bricks</span>
+                            <span class="material-symbols-rounded visibility icon">visibility</span></div>
+            </div>
+
+</div>
+            
+
+
+
+
+          <div id="charts" class="control">
+            <div id="hn-wrap" class="big"><span class="material-symbols-rounded">
+              cottage
+              </span>
+              x<span  id="number-houses"></span>
+            </div>
+
+            <div class="">
+              <strong>FOREST COVER (r5km)</strong>
+              <div id="pie-wrap">
+                <canvas id="pie-chart-percentage" width="400" height="400"></canvas>
+                <div id="pie-label" class="big">53%</div>
+              </div>
+            </div>
+            <div class="">
+
+              <strong>FOREST DISTANCE</strong>
+              <div id="km-wrap" class="big">
+              <span  id="distance-km">0</span>km
+              </div>
+  <canvas id="line-chart-distance" width="400" height="100">
+
+</canvas>
+</div>
+</div>
+          <!-- Canvas for Forest Percentage Pie Chart -->
+
+<div id="controls-bottom" class="control">
+  <strong>Year of construction:</strong>
+  <div id="slider"></div>
+
+
+</div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>

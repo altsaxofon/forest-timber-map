@@ -4,9 +4,9 @@
 This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden (1800–1920) and their relationship with forest coverage. 
 The data can be explored via a custom web-tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
 
-The first part is dataset containing ~5000 records of buildings. The data is scrapted from three major Swedish realtor webistes during one day in 2023. If the building techinque of the frame was specified this has been extracted and modeled into a taxonomy descripbed in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
+The first part is dataset containing ~5000 records of buildings. The data is scraped from three major Swedish realtor websites during one day in 2023. If the building technique of the frame was specified this has been extracted and modeled into a taxonomy described in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
 
-The scond part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of "Skogskartan" in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
+The second part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
 
 The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF and XYZ tiles.
 
