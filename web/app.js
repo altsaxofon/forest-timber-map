@@ -50,6 +50,7 @@ const map = new ol.Map({
       })
     ],
     overlays: [overlay],
+    controls: [],
     view: new ol.View({
 
       // Set up map view and restrictions
@@ -85,6 +86,24 @@ const histLayer =  new ol.layer.Tile({
 
 map.addLayer(histLayer);
 
+// Add forest layer for calculations
+
+const forestShapeLayerCalculations = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    url: '../data/forest-data/forest_cover_sweden_1840.geojson', 
+    format: new ol.format.GeoJSON(),
+  }),
+  visible: true,
+  // Set style of forest layer
+  style: new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: 'rgba(255, 255, 255, 0)', // 
+    })
+  }),
+});
+
+map.addLayer(forestShapeLayerCalculations);
+
 // Add  forest shape layer
 
   const forestShapeLayer = new ol.layer.Vector({
@@ -102,6 +121,8 @@ map.addLayer(histLayer);
   });
   
   map.addLayer(forestShapeLayer);
+
+
 
 // Add our House Data 
 
@@ -535,33 +556,20 @@ kmLabel.innerHTML = Math.round(meanDistanceValue);
 }
 
 
-
+/*
 map.on('moveend', function(){
 
   const view = map.getView();
   const extent = view.calculateExtent(map.getSize());
 
-  console.log(extent);
+ // console.log(extent);
 
 
 });
+*/
 
 
 
-
-
-
-// Helper function to create a circular geometry
-function createCircle(center, radius, projection) {
-  // Convert center to map projection
-  const transformedCenter = ol.proj.transform(center, 'EPSG:4326', projection);
-
-  // Generate circular geometry
-  const circle = new ol.geom.Circle(transformedCenter, radius);
-
-  // Convert the Circle to a Polygon (OpenLayers doesn't render Circle directly)
-  return ol.geom.Polygon.fromCircle(circle, 64); // 64 points for smoothness
-}
 
 
 // Add a click event listener to the map
@@ -578,7 +586,9 @@ map.on('click', function (event) {
       // Get the coordinates of the clicked house
       const coordinates = feature.getGeometry().getCoordinates();
 
-            // Center the map on the clicked house and zoom in
+      find_forest_edge(coordinates);
+      draw_circle(coordinates);
+
       // Smoothly fly to the selected house
       map.getView().animate({
         center: coordinates, // Target coordinates
@@ -588,60 +598,8 @@ map.on('click', function (event) {
       });
 
 
-
-      // Create a circle geometry (5km radius, in meters)
-      const circleGeometry = createCircle(
-        ol.proj.toLonLat(coordinates, 'EPSG:3006'), // Transform from map projection to lon/lat
-        50000, // Radius in meters
-        'EPSG:3006' // Map projection
-      );
-
-      // Add the circle as a new feature
-      const circleFeature = new ol.Feature(circleGeometry);
-      circleLayer.getSource().addFeature(circleFeature);
-
-
       // Set the popup
-      
-      const frameFeatures = feature.getProperties(); // Get all properties of the feature
-      const content = document.getElementById('popup-content');
-      
-      overlay.setPosition(coordinates);
-      content.innerHTML = "";
-
-
-      const yearContainer = document.createElement('strong');
-      const list = document.createElement('ul');
-
-      for (let frame in frameFeatures) {
-        if (frame.startsWith('Frame')) {
-          if(frameFeatures[frame]){
-          const listItem = document.createElement('li');
-          listItem.textContent = `${frame.replace(/^Frame_/, '').replace(/_/g, ' - ')}`;
-          listItem.setAttribute('data-frame', frame);
-          list.appendChild(listItem);
-          }
-        }
-      }
-
-      if(frameFeatures['Date']){
-
-              // Extract the year from the 'Date' property (assuming it exists and is a valid date string)
-      const featureDate = frameFeatures["Date"]; // Access the Date property
-      let year = ''; // Default to an empty string if no Date exists
-      
-        if (featureDate) {
-          const dateObject = new Date(featureDate); // Convert to Date object
-          if (!isNaN(dateObject)) { // Check if it's a valid date
-            year = dateObject.getFullYear(); // Extract the year
-            yearContainer.innerHTML = year;
-          }
-        }
-        
-
-      }      
-      content.appendChild(yearContainer);
-      content.appendChild(list);
+      create_popup(feature);
 
       // Apply filters to only show the selected house
       applyFilters(feature);
@@ -658,5 +616,164 @@ map.on('click', function (event) {
 });
 
 
+
+
+function draw_circle(coordinates){
+
+    // Helper function to create a circular geometry
+  function createCircle(center, radius, projection) {
+    // Convert center to map projection
+    const transformedCenter = ol.proj.transform(center, 'EPSG:4326', projection);
+    
+    // Generate circular geometry
+    const circle = new ol.geom.Circle(transformedCenter, radius);
+    
+    // Convert the Circle to a Polygon (OpenLayers doesn't render Circle directly)
+    return ol.geom.Polygon.fromCircle(circle, 64); // 64 points for smoothness
+  }
+  
+  // Create a circle geometry (5km radius, in meters)
+  const circleGeometry = createCircle(
+    ol.proj.toLonLat(coordinates, 'EPSG:3006'), // Transform from map projection to lon/lat
+    50000, // Radius in meters
+    'EPSG:3006' // Map projection
+  );
+  
+  // Add the circle as a new feature
+  const circleFeature = new ol.Feature(circleGeometry);
+  circleLayer.getSource().addFeature(circleFeature);
+  
+}
+
+// Experimental to draw a line between pont and forest 
+
+function find_forest_edge(coordinates){
+
+      // Get the clicked house coordinates
+      const houseCoords = coordinates;
+
+      let nearestDistance = Infinity;
+      let nearestPoint = null;
+
+      let insideForest = false;
+      console.log("find edge");
+
+      console.log(forestShapeLayerCalculations.getSource());
+
+      forestShapeLayerCalculations.getSource().getFeatures().forEach((forestFeature) => {
+        const forestGeom = forestFeature.getGeometry();
+    
+        // Check if the point is within the polygon
+        if (forestGeom.intersectsCoordinate(houseCoords)) {
+          insideForest = true;
+        }
+      });
+    
+      // If the house is inside a forest, no need to draw a line
+      if (insideForest) {
+        console.log('The house is already inside a forest.');
+        return;
+      }
+    
+
+      // Loop through all forest polygons to find the nearest edge
+      forestShapeLayerCalculations.getSource().getFeatures().forEach((forestFeature) => {
+
+        
+        const forestGeom = forestFeature.getGeometry();
+
+
+        // Get the closest point on the forest polygon's edge
+        const closestPoint = forestGeom.getClosestPoint(houseCoords);
+
+        // Calculate distance to the house
+        const distance = ol.sphere.getDistance(
+          ol.proj.toLonLat(houseCoords, 'EPSG:3006'),
+          ol.proj.toLonLat(closestPoint, 'EPSG:3006')
+        );
+
+        // Update nearest point if this is closer
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestPoint = closestPoint;
+        }
+
+      });
+
+      if (nearestPoint) {
+
+        console.log(nearestDistance);
+
+
+        // Create a line from the house to the nearest point
+        const lineGeometry = new ol.geom.LineString([houseCoords, nearestPoint]);
+
+        // Create a feature for the line
+        const lineFeature = new ol.Feature({
+          geometry: lineGeometry,
+        });
+
+        // Style the line
+        lineFeature.setStyle(
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: 'rgba(0, 0, 0, 0.8)', // Red line
+              width: 4,
+            }),
+          })
+        );
+
+        // Add the line to the circleLayer (or create a new layer for lines)
+        circleLayer.getSource().addFeature(lineFeature);
+      }
+
+}
+
+function create_popup(feature){
+
+  const coordinates = feature.getGeometry().getCoordinates();
+  const newCoordinates = [coordinates[0], coordinates[1] + 49000];
+  const frameFeatures = feature.getProperties(); // Get all properties of the feature
+  const content = document.getElementById('popup-content');
+  
+  overlay.setPosition(newCoordinates);
+  content.innerHTML = "";
+
+
+  const yearContainer = document.createElement('strong');
+  const list = document.createElement('ul');
+
+  for (let frame in frameFeatures) {
+    if (frame.startsWith('Frame')) {
+      if(frameFeatures[frame]){
+      const listItem = document.createElement('li');
+      listItem.textContent = `${frame.replace(/^Frame_/, '').replace(/_/g, ' - ')}`;
+      listItem.setAttribute('data-frame', frame);
+      list.appendChild(listItem);
+      }
+    }
+  }
+
+  if(frameFeatures['Date']){
+
+          // Extract the year from the 'Date' property (assuming it exists and is a valid date string)
+  const featureDate = frameFeatures["Date"]; // Access the Date property
+  let year = ''; // Default to an empty string if no Date exists
+  
+    if (featureDate) {
+      const dateObject = new Date(featureDate); // Convert to Date object
+      if (!isNaN(dateObject)) { // Check if it's a valid date
+        year = dateObject.getFullYear(); // Extract the year
+        yearContainer.innerHTML = year;
+      }
+    }
+    
+
+  }      
+  content.appendChild(yearContainer);
+  content.appendChild(list);
+
+
+}
 
 applyFilters();
