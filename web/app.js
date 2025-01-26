@@ -68,13 +68,16 @@ const map = new ol.Map({
 
 const histLayer =  new ol.layer.Tile({
   title: 'Historic map',
- 
+ /*
   // Transform our extent to SWEREF99TM (3006)
   extent: ol.proj.transformExtent(
     [925249.853900, 7321531.794924, 2945416.413700, 10905797.788400],
+//    [925249.853900, 7321531.794924, 2945416.413700, 10905797.788400],
+
     'EPSG:3857',
     'EPSG:3006'
 ),
+*/
   source: new ol.source.XYZ({
       attributions: '',
       minZoom: 3,
