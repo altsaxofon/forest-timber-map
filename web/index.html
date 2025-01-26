@@ -9,6 +9,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
     <link rel="manifest" href="icon/site.webmanifest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.15.0/proj4.js"></script>
 
@@ -53,6 +55,13 @@
         </span>  
     </a>
     </div>
+
+
+    <div id="menu-container">
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-button">☰</label>
+
+
         <div id="controls" class="control">
 
           <STRONG>MAP LAYER</strong>
@@ -100,40 +109,44 @@
 
 </div>
             
-
-
-
-
-          <div id="charts" class="control">
-            <div id="hn-wrap" class="big"><span class="material-symbols-rounded">
-              cottage
-              </span>
-              x<span  id="number-houses"></span>
-            </div>
-
-            <div class="">
-              <strong>FOREST COVER (r5km)</strong>
-              <div id="pie-wrap">
-                <canvas id="pie-chart-percentage" width="400" height="400"></canvas>
-                <div id="pie-label" class="big">53%</div>
-              </div>
-            </div>
-            <div class="">
-
-              <strong>FOREST DISTANCE</strong>
-              <div id="km-wrap" class="big">
-              <span  id="distance-km">0</span>km
-              </div>
-  <canvas id="line-chart-distance" width="400" height="100">
-
-</canvas>
 </div>
-</div>
+
+
+                  <div id="charts" class="control">
+                  <div id="chart-group">
+                    <div id="hn-wrap" class="big"><span class="material-symbols-rounded">
+                      cottage
+                      </span>
+                      x<span  id="number-houses"></span>
+                    </div>
+
+                    <div id="pie-wrap">
+                      <strong>FOREST COVER (r5km)</strong>
+                      <div id="pie-container">
+                        <canvas id="pie-chart-percentage" width="400" height="400"></canvas>
+                        <div id="pie-label" class="big">53%</div>
+                      </div>
+                    </div>
+                    <div id="km-wrap">
+
+                      <strong>FOREST DISTANCE</strong>
+                      <div id="" class="big">
+                      <span  id="distance-km">0</span>km
+                      </div>
+          <canvas id="line-chart-distance" width="400" height="100">
+          </div>
+        </canvas>
+        </div>
+        </div>
           <!-- Canvas for Forest Percentage Pie Chart -->
 
 <div id="controls-bottom" class="control">
-  <strong>Year of construction:</strong>
-  <div id="slider"></div>
+  <div id="control-year-wrapper">
+  <strong id="year-description">Year of construction:</strong>
+  <strong id="year-year">1500-1200</strong>
+  </div>
+  <div id="slider">
+  </div>
 
 
 </div>

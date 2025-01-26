@@ -208,6 +208,7 @@ var slider = document.getElementById('slider');
 var pieLabel = document.getElementById('pie-label');
 var numberHouses = document.getElementById('number-houses');
 var kmLabel = document.getElementById('distance-km');
+var yearLabel = document.getElementById('year-year');
 
 noUiSlider.create(slider, {
     start: [1800, 2020],
@@ -245,6 +246,7 @@ slider.noUiSlider.on('update', function (values, handle) {
 
   currentMaxDate = new Date(`${values[1]}-12-31`);
   currentMinDate = new Date(`${values[0]}-12-31`);
+  yearLabel.innerHTML = values[0]+" - "+values[1];
   applyFilters(); // Apply both filters
 
 });
@@ -598,14 +600,11 @@ map.on('click', function (event) {
         zoom: 9, // Target zoom level
         duration: 200, // Duration of the animation in milliseconds
         easing: ol.easing.easeOut // Easing function for a smooth effect
+      }, function(){
+        create_popup(feature);  // Create popup after animation
+        applyFilters(feature);  // Apply filters after animation
       });
-
-
-      // Set the popup
-      create_popup(feature);
-
-      // Apply filters to only show the selected house
-      applyFilters(feature);
+ 
 
       return true; // Stop iterating over features
     }
@@ -741,7 +740,6 @@ function create_popup(feature){
   
   overlay.setPosition(newCoordinates);
   content.innerHTML = "";
-
 
   const yearContainer = document.createElement('strong');
   const list = document.createElement('ul');
