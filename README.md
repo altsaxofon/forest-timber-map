@@ -63,11 +63,13 @@ Original |  Geo-referenced      |  Final data
 -------------------------|-------------------------|-------------------------
 <img width="300" alt="Layer 3" src="https://github.com/user-attachments/assets/dc1719fb-2958-4b2d-a13d-8b22a9677f00" />|<img width="300" alt="Layer 2" src="https://github.com/user-attachments/assets/aa9f07ba-bcfc-4f3d-a22c-883e9bd571d1" />|<img width="300" alt="Layer 1" src="https://github.com/user-attachments/assets/a12bf7ac-b086-4c85-9a50-a98a32ce1160" />
 
-Step 1 |  Step 2 |Step 3 |Step 4 |Step 5
---------|--------|--------|--------|--------
-![black_and_white](https://github.com/user-attachments/assets/0f0f1b67-19c3-48b3-aa34-16ea1baa9e7a) | ![guassian blur](https://github.com/user-attachments/assets/dae6a5c7-f7a9-4b62-a927-43ef09c20c76) |![original](https://github.com/user-attachments/assets/5e9dece2-2f50-4457-97bf-0eec94fb4da1)|![selection](https://github.com/user-attachments/assets/30356c11-6a6a-4ba9-a32f-b040b1156e37)|![threshhold](https://github.com/user-attachments/assets/69bc9a39-b70c-488f-b3fd-b188d7ba8d57)
---------|--------|--------|--------|--------
-Step 1 |  Step 2 |Step 3 |Step 4 |Step 5
+**Map processing**
+
+Step 1 |  Step 2 |Step 3 |Step 4 |Step 5 |Step 6
+------|--------|--------|--------|--------|--------
+![1](https://github.com/user-attachments/assets/48530e44-946d-492e-9dc3-59cff664d09c)|![2](https://github.com/user-attachments/assets/d3914634-9942-48fa-9cd6-4a0d4bc8168f)|![3](https://github.com/user-attachments/assets/860739e1-c837-446e-93dc-7413977f3d3f)|![4](https://github.com/user-attachments/assets/5038a0c9-b28a-4b84-9526-e15c0e21c537)|![5](https://github.com/user-attachments/assets/3be1aeb0-b5b6-4ca0-b695-a650ea36e9af)|![6](https://github.com/user-attachments/assets/cb4d8873-de4f-467e-b081-0873eb616b2b)
+Import |  Isolate regions | Extract | Blur |Threshold | Verify
+
 
 
 - **Description**: Historical forest coverage in Sweden, categorized by forest type.  
