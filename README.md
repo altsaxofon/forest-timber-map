@@ -117,9 +117,9 @@ Average forest cover within a 100km radius |  Average distance to nearest forest
 ## Web interface
 
 The web interface was designed to facilitate exploration of the house and forest cover datasets. It allows users to:
-	-	**Filter Houses:** Filter based on construction year and building techniques.
-	-	**Visualise Forest Relations:** Display forest relationships of filtered houses through interactive graphs.
- -	**View individual data points:** Select individual houses to view their specific data and details.
+- **Filter Houses:** Filter based on construction year and building techniques.
+- **Visualise Forest Relations:** Display forest relationships of filtered houses through interactive graphs.
+- **View individual data points:** Select individual houses to view their specific data and details.
 - **Switch Base Maps:** Toggle between the original map and the processed forest cover data as the base map.
 	
 The tool was built using the open source Javascript mapping library [OpenLayers](https://openlayers.org/) and the base map is the `Positron` map by [CARTO](https://carto.com/basemaps)
