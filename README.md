@@ -7,7 +7,7 @@ The data can be explored via a custom web tool: [The Forest/Timber map](https://
 
 <br />
 <p align="center">
-<img width="800" alt="Map interface" src="https://github.com/user-attachments/assets/2cd82702-08f7-49d8-96aa-6f5314ac1150" />
+<img width="800" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />
 </p>
 
 <br />
@@ -128,7 +128,7 @@ The tool was built using the open source Javascript mapping library [OpenLayers]
 
 | Overview     | Detail |
 | ---      | ---       |
-<img width="800" alt="Map interface" src="https://github.com/user-attachments/assets/2cd82702-08f7-49d8-96aa-6f5314ac1150" />|<img width="800" alt="Map interface" src="https://github.com/user-attachments/assets/d55bd54d-cc76-44c3-b9c4-f1963a490457" />
+<img width="450" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />|<img width="450" alt="Map interface" src="https://github.com/user-attachments/assets/23177d5f-0ad7-42ca-9a0a-b991d8dd36d4" />
 
 
 
