@@ -1,4 +1,4 @@
-# Swedish Historic Housing and Forest Coverage  
+# Swedish Historic Building traditions and Forest Coverage  
 
 
 This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden and their relationship with historic forest coverage.
