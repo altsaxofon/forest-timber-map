@@ -17,7 +17,7 @@ The data can be explored via a custom web tool: [The Forest/Timber map](https://
 This project was completed as part of a course in *Digital Humanities Research Methods* at Linnaeus University. It serves as a prototype for exploring how publicly available data from property listings can be utilised for geospatial analysis of historical building practices.
 
 #### House data
-The first part of this project is a dataset containing ~5000 records of listings. The data was scraped from three major Swedish realtor websites in a single day in 2023.
+The first part of this project is a dataset containing ~5000 records of houses. The data was scraped from three major Swedish realtor websites in a single day in 2023.
 
 #### Forest data 
 The second part consists of data about forest cover in the 1840s, extracted from a digitization of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archives. This map has been georeferenced and processed to enable computational analysis.
@@ -92,11 +92,11 @@ Import |  Isolate regions | Extract | Blur |Threshold | Verify
 <br />
 
 ## Analysis
-A preliminary analysis was conducted to compare different groups of building techniques with forest cover data.
+A preliminary analysis was conducted to compare different groups of building techniques of houses built before 1920 with forest cover data.
 <br />
 
 ### Visualisation
-The heat map below visualises the spatial distribution of three construction technique groups overlaid on the 1840 forest cover data:
+The heat map below visualises the spatial distribution of three construction technique groups (pre 1920) overlaid on the 1840 forest cover data:
 
 - Full log (green) 
 - Wood saving texhniques (yellow) 
