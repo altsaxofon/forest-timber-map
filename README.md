@@ -128,7 +128,7 @@ The tool was built using the open source Javascript mapping library [OpenLayers]
 
 | Overview     | Detail |
 | ---      | ---       |
-<img width="400" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />|<img width="400" alt="Map interface" src="https://github.com/user-attachments/assets/23177d5f-0ad7-42ca-9a0a-b991d8dd36d4" />
+<img width="350" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />|<img width="350" alt="Map interface" src="https://github.com/user-attachments/assets/23177d5f-0ad7-42ca-9a0a-b991d8dd36d4" />
 
 
 
