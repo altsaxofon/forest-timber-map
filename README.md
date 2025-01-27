@@ -1,43 +1,48 @@
-# Swedish Historic Housing and Forest Coverage Datasets  
+# Swedish Historic Building traditions and Forest Coverage  
 
 
-This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden (1800–1920) and their relationship with forest coverage. 
-The data can be explored via a custom web-tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
+This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden and their relationship with historic forest coverage.
 
-The first part is dataset containing ~5000 records of buildings. The data is scraped from three major Swedish realtor websites during one day in 2023. If the building technique of the frame was specified this has been extracted and modeled into a taxonomy described in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
+The data can be explored via a custom web tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
 
-The second part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
+<br />
+<p align="center">
+<img width="800" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />
+</p>
 
-The datasets are available in multiple formats: CSV, GeoJSON, and GeoTIFF and XYZ tiles.
+<br />
 
-## Table of Contents  
-- [Overview](#overview)  
-- [Datasets](#datasets)  
-  - [House Data](#house-data)  
-  - [Forest Coverage Data](#forest-coverage-data)  
-- [File Structure](#file-structure)  
-- [Usage Instructions](#usage-instructions)  
-- [Dependencies](#dependencies)  
-- [Credits](#credits)  
+## Overview
+#### Purpose
+This project was completed as part of a course in *Digital Humanities Research Methods* at Linnaeus University. It serves as a prototype for exploring how publicly available data from property listings can be utilised for geospatial analysis of historical building practices.
 
----
+#### House data
+The first part of this project is a dataset containing ~5000 records of houses. The data was scraped from three major Swedish realtor websites in a single day in 2023.
 
-## Overview  
+#### Forest data 
+The second part consists of data about forest cover in the 1840s, extracted from a digitization of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archives. This map has been georeferenced and processed to enable computational analysis.
 
-The data provided here was collected, cleaned, and processed as part of a research project investigating the impact of forest availability on historical building techniques. The datasets include:  
-1. **House Data**: Details of 6,311 houses (construction year, building techniques, location, etc.).  
-2. **Forest Coverage**: Historical forest coverage data derived from georeferenced maps.  
+#### Analysis
+A preliminary analysis of the relationship between the two datasets was conducted through visualisation and statistical methods.
+<br />
 
----
-
-## Datasets  
+## Data collection
 
 ### House Data  
+The house data was collected by scraping non-apartment property listings from three major Swedish realtor websites. The data was subsequently indexed and cleaned. If the construction technique of the building’s frame was specified, this information was extracted and modeled into a taxonomy described in the data model. This taxonomy categorizes various building techniques, with a focus on wooden materials.
 
-- **Description**: Includes 6,311 houses with details like construction year, building techniques, and geographic location.  
-- **Formats**:  
-  - `CSV`: Tabular format for general-purpose use.  
-  - `GeoJSON`: Geospatial format for use in GIS applications.  
+<br />
+
+**Data source example**
+
+Realtor 1            |  Realtor 2      |  Realtor 3      |  Example house     
+-------------------------|-------------------------|-------------------------|-------------------------
+ ![R1](https://github.com/user-attachments/assets/75b0e328-93d3-4973-8b0c-de78ef1e0e98)| ![R2](https://github.com/user-attachments/assets/8f85e9ca-4d4a-45c5-9694-8b189a7c24be) |![R3](https://github.com/user-attachments/assets/e52e583f-35af-442e-8449-c1daf610d710) | ![406924513-f2f418c6-86e2-4274-b077-b83f7ef755c7](https://github.com/user-attachments/assets/8a64ce8c-dc28-4521-a428-f3732ea72724)
+
+
+<br />
+
+**Data model**
 
 | **Name**                  | **Type**   | **Example value**         | **Description**                                             |
 |---------------------------|------------|---------------------------|-------------------------------------------------------------|
@@ -62,11 +67,70 @@ The data provided here was collected, cleaned, and processed as part of a resear
 | Frame_steel               | Bool       | FALSE                     | If "steel" or similar is mentioned in Frame                |
 | Frame                     | String     | Sannolik lersten med  <br />korsvirke samt gråsten. <br />Annat material kan  <br />förekomma. | Original frame description from property listing.          |
 
-### Forest Coverage Data  
+<br />
 
-- **Description**: Historical forest coverage in Sweden, categorized by forest type.  
-- **Formats**:  
-  - `GeoTIFF`: Raster format for precise geospatial analysis.  
-  - `GeoJSON`: Vectorized version for integration into GIS tools.  
+### Forest Cover Data 
+The historic forest cover data was extracted from the digitization of a map in the Swedish National Archives, ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder). The map, created in the 1840s, contains three categories of forest: `Shrubland`, `Forest for firewood and charcoal` and `Forest for sawmills and construction`.  Only the last category was used in this project. The map was georeferenced and processed in QGIS to enable computational analysis.
 
----
+<br />
+
+**Forest map**
+
+Original |  Geo-referenced      |  Final data
+-------------------------|-------------------------|-------------------------
+<img width="300" alt="Layer 3" src="https://github.com/user-attachments/assets/dc1719fb-2958-4b2d-a13d-8b22a9677f00" />|<img width="300" alt="Layer 2" src="https://github.com/user-attachments/assets/aa9f07ba-bcfc-4f3d-a22c-883e9bd571d1" />|<img width="300" alt="Layer 1" src="https://github.com/user-attachments/assets/a12bf7ac-b086-4c85-9a50-a98a32ce1160" />
+
+<br />
+
+**Map processing**
+
+Step 1 |  Step 2 |Step 3 |Step 4 |Step 5 |Step 6
+------|------|------|------|------|------
+![1](https://github.com/user-attachments/assets/48530e44-946d-492e-9dc3-59cff664d09c)|![2](https://github.com/user-attachments/assets/d3914634-9942-48fa-9cd6-4a0d4bc8168f)|![3](https://github.com/user-attachments/assets/860739e1-c837-446e-93dc-7413977f3d3f)|![4](https://github.com/user-attachments/assets/5038a0c9-b28a-4b84-9526-e15c0e21c537)|![5](https://github.com/user-attachments/assets/3be1aeb0-b5b6-4ca0-b695-a650ea36e9af)|![6](https://github.com/user-attachments/assets/cb4d8873-de4f-467e-b081-0873eb616b2b)
+Import |  Isolate regions | Extract | Blur |Threshold | Verify
+
+<br />
+
+## Analysis
+A preliminary analysis was conducted to compare different groups of building techniques of houses built before 1920 with forest cover data.
+<br />
+
+### Visualisation
+The heat map below visualises the spatial distribution of three construction technique groups (pre 1920) overlaid on the 1840 forest cover data:
+
+- Full log (green) 
+- Wood saving texhniques (yellow) 
+- Stone and brick (blue) 
+
+<img width="700" alt="Chart 2" src="https://github.com/user-attachments/assets/96cbb199-3922-4999-a6a2-75f462f7098f" />
+<br />
+
+### Statistics
+The forest cover within a 100km radius and the closest distance to forested areas were analyzed and visualised via bar grpahs.
+
+Chart 1 | Chart 2
+------|------|
+<img width="300" alt="Chart 2" src="https://github.com/user-attachments/assets/35ddd053-84f9-4578-bb70-f5860a72d54e" />|<img width="300" alt="Chart 1" src="https://github.com/user-attachments/assets/72860106-e340-4e20-84c2-9fea6f990a0b" />
+Average forest cover within a 100km radius |  Average distance to nearest forest
+<br />
+
+## Web interface
+
+The web interface was designed to facilitate exploration of the house and forest cover datasets. It allows users to:
+- **Filter Houses:** Filter based on construction year and building techniques.
+- **Visualise Forest Relations:** Display forest relationships of filtered houses through interactive graphs.
+- **View individual data points:** Select individual houses to view their specific data and details.
+- **Switch Base Maps:** Toggle between the original map and the processed forest cover data as the base map.
+	
+The tool was built using the open source Javascript mapping library [OpenLayers](https://openlayers.org/) and the base map is the `Positron` map by [CARTO](https://carto.com/basemaps)
+
+<br />
+
+| Overview     | Detail |
+| ---      | ---       |
+<img width="350" alt="Map interface" src="https://github.com/user-attachments/assets/c3a24ee7-f983-4f58-86f1-df73ad07b1de" />|<img width="350" alt="Map interface" src="https://github.com/user-attachments/assets/23177d5f-0ad7-42ca-9a0a-b991d8dd36d4" />
+
+
+
+
+

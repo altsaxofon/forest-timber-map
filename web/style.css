@@ -422,4 +422,130 @@ margin: 0 0 10px 0;
             align-items: center;
             height: 120px;
             gap: 10px;
-            fl
+            flex-wrap: nowrap;
+            align-content: flex-end;
+           
+
+        }
+        #pie-container{
+
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 60px;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        #pie-label {
+            position: relative;
+            font-size: 30px;
+            order: 1;
+            top: 0;
+            left: 0;
+            margin: 0;
+            transform: none;
+
+        }
+        canvas#pie-chart-percentage{
+
+            height: 30px;
+            width: 30px;
+            order: 2;
+        }
+
+
+
+        #controls-bottom {
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+        }
+        .noUi-pips.noUi-pips-horizontal {
+            display: none;
+        }
+        #slider{
+            
+            margin: 0px 20px 0 0;
+
+        }
+        #controls-bottom{
+
+            padding: 10px;
+
+
+        }
+        #year-description{
+
+            display: none;
+
+        }
+        #year-year{
+            padding-right: 15px;
+            padding-left: 10px;
+
+        }
+
+
+
+        #controls{
+
+            top: 50%;
+            left: 0;
+            width: 120px;
+            transform: translate(0, -50%);
+            display: none;
+
+        }
+        .menu-button{
+            display: block;
+            border-radius: 20px;
+            left: 10px;
+            background: #fff;
+            border: 2px solid black;
+            position: absolute;
+            box-sizing: border-box;
+            cursor: pointer;
+            padding: 4px;
+            font-size: 18px;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+
+        }
+        #menu-toggle {
+
+            display: block;
+            left: 10px;     
+            position: absolute;
+            box-sizing: border-box;    
+            width: 40px;
+            height: 40px;  
+        }
+        #menu-container{
+            position: absolute;
+            top: 130px;
+
+        }
+        /* Menu button styles */
+
+
+/* Show the menu when the checkbox is checked */
+input#menu-toggle:checked{
+
+    height: 500px;
+
+}
+input#menu-toggle:checked ~ div
+{
+  display: block;
+}
+.menu-checkbox:checked{
+
+    height: 100px;
+}
+
+
+
+      }
