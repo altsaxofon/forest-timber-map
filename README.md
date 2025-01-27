@@ -18,17 +18,20 @@ The second part is data about forest cover in the 1840s. This data has been extr
 
 
 
-## Datasets  
+## Data collection
 
 ### House Data  
 The house data was collected by scraping non-apartement property listnings from three major Swedish realtor websites. The data was then indexed/cleaned. If the building technique of the frame was specified this has been extracted and modeled into a taxonomy described in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
 
+<br />
 **Data source example**
 
 Realtor 1            |  Realtor 2      |  Realtor 3      |  Example house     
 -------------------------|-------------------------|-------------------------|-------------------------
- ![R1](https://github.com/user-attachments/assets/75b0e328-93d3-4973-8b0c-de78ef1e0e98)| ![R2](https://github.com/user-attachments/assets/8f85e9ca-4d4a-45c5-9694-8b189a7c24be) |![R3](https://github.com/user-attachments/assets/e52e583f-35af-442e-8449-c1daf610d710) | ![HOUSE](https://github.com/user-attachments/assets/f2f418c6-86e2-4274-b077-b83f7ef755c7)
+ ![R1](https://github.com/user-attachments/assets/75b0e328-93d3-4973-8b0c-de78ef1e0e98)| ![R2](https://github.com/user-attachments/assets/8f85e9ca-4d4a-45c5-9694-8b189a7c24be) |![R3](https://github.com/user-attachments/assets/e52e583f-35af-442e-8449-c1daf610d710) | ![406924513-f2f418c6-86e2-4274-b077-b83f7ef755c7](https://github.com/user-attachments/assets/8a64ce8c-dc28-4521-a428-f3732ea72724)
 
+
+<br />
 **Data model**
 
 | **Name**                  | **Type**   | **Example value**         | **Description**                                             |
@@ -55,14 +58,16 @@ Realtor 1            |  Realtor 2      |  Realtor 3      |  Example house
 | Frame                     | String     | Sannolik lersten med  <br />korsvirke samt gråsten. <br />Annat material kan  <br />förekomma. | Original frame description from property listing.          |
 
 ### Forest Coverage Data 
-The historic forest cover data was extracted from the digitalisation of a map in the the Swedish National Archives.  ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in . The map was created in 1840 and contains three categories of forest: `Shrubland`, `Forest for firewood and charcoal` and `Forest for sawmills and construction`. Only the last category was used for this project. The map was georeferenced and processed in `QGIS` to be computable. 
+The historic forest cover data was extracted from the digitalisation of a map in the the Swedish National Archives.  ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder). The map was created in 1840 and contains three categories of forest: `Shrubland`, `Forest for firewood and charcoal` and `Forest for sawmills and construction`. Only the last category was used for this project. The map was georeferenced and processed in `QGIS` to be computable. 
 
+<br />
 **Forest map**
 
 Original |  Geo-referenced      |  Final data
 -------------------------|-------------------------|-------------------------
 <img width="300" alt="Layer 3" src="https://github.com/user-attachments/assets/dc1719fb-2958-4b2d-a13d-8b22a9677f00" />|<img width="300" alt="Layer 2" src="https://github.com/user-attachments/assets/aa9f07ba-bcfc-4f3d-a22c-883e9bd571d1" />|<img width="300" alt="Layer 1" src="https://github.com/user-attachments/assets/a12bf7ac-b086-4c85-9a50-a98a32ce1160" />
 
+<br />
 **Map processing**
 
 Step 1 |  Step 2 |Step 3 |Step 4 |Step 5 |Step 6
@@ -76,5 +81,4 @@ Import |  Isolate regions | Extract | Blur |Threshold | Verify
 - **Formats**:  
   - `GeoTIFF`: Raster format for precise geospatial analysis.  
   - `GeoJSON`: Vectorized version for integration into GIS tools.  
-
 ---
