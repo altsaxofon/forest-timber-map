@@ -1,5 +1,7 @@
 # Swedish Historic Housing and Forest Coverage Datasets  
 
+![OK](https://github.com/user-attachments/assets/2cd82702-08f7-49d8-96aa-6f5314ac1150)
+
 
 This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden (1800–1920) and their relationship with forest coverage. 
 The data can be explored via a custom web-tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
