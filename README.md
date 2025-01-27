@@ -1,4 +1,4 @@
-# Swedish Historic Housing and Forest Coverage Datasets  
+# Swedish Historic Housing and Forest Coverage  
 
 
 This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden and their relationship with historic forest coverage. 
@@ -9,14 +9,17 @@ The data can be explored via a custom web-tool: [The Forest/Timber map](https://
 </p>
 
 ## Overview
-### House data
+#### Purpose
+This project was done as a part of a cource in *Digital Humanities Research Methods* at Linneus University. It is a small prototype for exporling how public available data from property listing can be utilised for geospatial analysis of historic building practices.
+
+#### House data
 The first part of this project is dataset containing ~5000 records of buildings. The data is scraped from three major Swedish realtor websites during one day in 2023. 
 
-### Forest data 
+#### Forest data 
 The second part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
 
-### Analysis
-
+#### Analysis
+A preliminary analysis of the relationship between the two datasets were performed via visualisation and statistical analysis.
 
 
 ## Data collection
@@ -81,24 +84,27 @@ Step 1 |  Step 2 |Step 3 |Step 4 |Step 5 |Step 6
 Import |  Isolate regions | Extract | Blur |Threshold | Verify
 
 ## Analysis
-A quick preliminary analysis was performed where different groups of building techniqued were compared to forest cover. In the heat map below is a visualisation of the spatial distrubution of three groups on top of the 1840 forest cover. 
+A quick preliminary analysis was performed where different groups of building techniqued were compared to forest cover. 
+
+<br />
+
+### Visualisation
+In the heat map below is a visualisation of the spatial distrubution of three construnction technique groups on top of the 1840 forest cover. 
 
 - Full log (green) 
 - Wood saving texhniques (yellow) 
 - Stone and brick (blue) 
 
-<p align="center">
 <img width="700" alt="Chart 2" src="https://github.com/user-attachments/assets/96cbb199-3922-4999-a6a2-75f462f7098f" />
-</p>
+<br />
 
+### Statistics
 The forest cover within a radius of 100km, and the closest distance to a forest was examined via bar-graphs:
 
-<p align="center">
 Chart 1 | Chart 2
 ------|------|
 <img width="300" alt="Chart 2" src="https://github.com/user-attachments/assets/35ddd053-84f9-4578-bb70-f5860a72d54e" />|<img width="300" alt="Chart 1" src="https://github.com/user-attachments/assets/72860106-e340-4e20-84c2-9fea6f990a0b" />
 Average forest cover within a 100km radius |  Average distance to nearest forest
-</p>
 
 
 
