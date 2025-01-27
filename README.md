@@ -1,9 +1,9 @@
 # Swedish Historic Housing and Forest Coverage  
 
 
-This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden and their relationship with historic forest coverage. 
+This repository provides datasets and accompanying resources for a study of historical housing construction techniques in Sweden and their relationship with historic forest coverage.
 
-The data can be explored via a custom web-tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
+The data can be explored via a custom web tool: [The Forest/Timber map](https://erikarnell.se/forest-timber-map/web/)
 
 <br />
 <p align="center">
@@ -14,23 +14,22 @@ The data can be explored via a custom web-tool: [The Forest/Timber map](https://
 
 ## Overview
 #### Purpose
-This project was done as a part of a cource in *Digital Humanities Research Methods* at Linneus University. It is a small prototype for exporling how public available data from property listing can be utilised for geospatial analysis of historic building practices.
+This project was completed as part of a course in *Digital Humanities Research Methods* at Linnaeus University. It serves as a prototype for exploring how publicly available data from property listings can be utilised for geospatial analysis of historical building practices.
 
 #### House data
-The first part of this project is dataset containing ~5000 records of buildings. The data is scraped from three major Swedish realtor websites during one day in 2023. 
+The first part of this project is a dataset containing ~5000 records of listings. The data was scraped from three major Swedish realtor websites in a single day in 2023.
 
 #### Forest data 
-The second part is data about forest cover in the 1840s. This data has been extracted from a digitalisation of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archive. This map has been georeferenced and processed to be computable. 
+The second part consists of data about forest cover in the 1840s, extracted from a digitization of ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder) in the Swedish National Archives. This map has been georeferenced and processed to enable computational analysis.
 
 #### Analysis
-A preliminary analysis of the relationship between the two datasets were performed via visualisation and statistical analysis.
-
+A preliminary analysis of the relationship between the two datasets was conducted through visualisation and statistical methods.
 <br />
 
 ## Data collection
 
 ### House Data  
-The house data was collected by scraping non-apartement property listnings from three major Swedish realtor websites. The data was then indexed/cleaned. If the building technique of the frame was specified this has been extracted and modeled into a taxonomy described in the data model. This taxonomy contains different building techniques with a focus on wooden materials.
+The house data was collected by scraping non-apartment property listings from three major Swedish realtor websites. The data was subsequently indexed and cleaned. If the construction technique of the building’s frame was specified, this information was extracted and modeled into a taxonomy described in the data model. This taxonomy categorizes various building techniques, with a focus on wooden materials.
 
 <br />
 
@@ -71,7 +70,7 @@ Realtor 1            |  Realtor 2      |  Realtor 3      |  Example house
 <br />
 
 ### Forest Cover Data 
-The historic forest cover data was extracted from the digitalisation of a map in the the Swedish National Archives.  ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder). The map was created in 1840 and contains three categories of forest: `Shrubland`, `Forest for firewood and charcoal` and `Forest for sawmills and construction`. Only the last category was used for this project. The map was georeferenced and processed in `QGIS` to be computable. 
+The historic forest cover data was extracted from the digitization of a map in the Swedish National Archives, ["Skogskartan"](https://sok.riksarkivet.se/?ValdSortering=DatumStigande&PageSize=20&EndastDigitaliserat=False&FacettFilter=arkis_ark_typ_facet%24Karta%2Fritning%3A&typAvLista=Standard&AvanceradSok=True&Ort=Karlstads+stift&page=1&postid=Arkis+27cfdb7e-88b3-41ec-82da-fe1fe4babddc&tab=post&s=Balder). The map, created in the 1840s, contains three categories of forest: `Shrubland`, `Forest for firewood and charcoal` and `Forest for sawmills and construction`.  Only the last category was used in this project. The map was georeferenced and processed in QGIS to enable computational analysis.
 
 <br />
 
@@ -93,12 +92,11 @@ Import |  Isolate regions | Extract | Blur |Threshold | Verify
 <br />
 
 ## Analysis
-A quick preliminary analysis was performed where different groups of building techniqued were compared to forest cover. 
-
+A preliminary analysis was conducted to compare different groups of building techniques with forest cover data.
 <br />
 
 ### Visualisation
-In the heat map below is a visualisation of the spatial distrubution of three construnction technique groups on top of the 1840 forest cover. 
+The heat map below visualises the spatial distribution of three construction technique groups overlaid on the 1840 forest cover data:
 
 - Full log (green) 
 - Wood saving texhniques (yellow) 
@@ -108,7 +106,7 @@ In the heat map below is a visualisation of the spatial distrubution of three co
 <br />
 
 ### Statistics
-The forest cover within a radius of 100km, and the closest distance to a forest was examined via bar-graphs:
+The forest cover within a 100km radius and the closest distance to forested areas were analyzed and visualised via bar grpahs.
 
 Chart 1 | Chart 2
 ------|------|
@@ -118,8 +116,12 @@ Average forest cover within a 100km radius |  Average distance to nearest forest
 
 ## Web interface
 
-The web interface was made to allow expolration of the datasets of houses and forest cover. It allows the user to filter the houses on construction year and building techniques and switch between the original map and the processed forest cover data as a base map. If a house is selected the forest cover relations are visualises. 
-
+The web interface was designed to facilitate exploration of the house and forest cover datasets. It allows users to:
+	-	**Filter Houses:** Filter based on construction year and building techniques.
+	-	**Visualise Forest Relations:** Display forest relationships of filtered houses through interactive graphs.
+ -	**View individual data points:** Select individual houses to view their specific data and details.
+- **Switch Base Maps:** Toggle between the original map and the processed forest cover data as the base map.
+	
 The tool was built using the open source Javascript mapping library [OpenLayers](https://openlayers.org/) and the base map is the `Positron` map by [CARTO](https://carto.com/basemaps)
 
 <br />
